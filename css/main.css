@@ -3416,6 +3416,11 @@ blockquote p {
 }
 
 @media only screen and (max-width:768px) {
+    .wheel-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
     .wheel {
         max-height: 150px;
         max-width: 150px;
