@@ -23,42 +23,23 @@
         a("#contact_form").validator(),
             a("#contact_form").on("submit", function (d) {
                 if (!d.isDefaultPrevented()) {
-                    const formList = a(this).serialize().split('&');
-                    const data = JSON.stringify({
-                        "Messages": [{
-                            "From": { "Email": formList[1].split('=')[1], "Name": formList[0].split('=')[1] },
-                            "To": [{ "Email": 'pranavvenkitesan@gmail.com', "Name": 'Pranav Venkitesan' }],
-                            "Subject": formList[2].split('=')[1],
-                            "TextPart": formList[3].split('=')[1]
-                        }]
-                    });
-
-                    const config = {
-                        method: 'post',
-                        url: 'https://api.mailjet.com/v3.1/send',
-                        data: data,
-                        headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept" },
-                        auth: { username: '65b177a94b446533179638599303b2b2', password: 'da48ab1d167574d8055c2b7bb00de986' },
-                    };
-                    return a.ajax({
-                        ...config,
-                        success: function (g) {
-                            var h = "alert-" + g.type,
-                                i = g.message;
-                            h &&
-                                i &&
-                                (a("#contact_form")
-                                    .find(".messages")
-                                    .html('<div class="alert ' + h + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + i + "</div>"),
-                                    a("#contact_form")[0].reset());
-                        },
-                        error: function (err) {
-                            console.log(err);
+                    const serviceID = 'default_service';
+                    const templateID = 'template_c2jal1m';
+                    emailjs.sendForm(serviceID, templateID, this).then((res) => {
+                        if (res.status === 200) {
+                            (a("#contact_form")
+                                .find(".messages")
+                                .html('<div class="alert ' + 'alert-success' + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + 'Details have been Delivered!' + "</div>"),
+                                a("#contact_form")[0].reset())
                         }
-                    }
-
-                    )
-
+                    }, (err) => {
+                        (a("#contact_form")
+                            .find(".messages")
+                            .html('<div class="alert ' + 'alert-error' + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + 'Error submitting form. Please try again..' + "</div>"),
+                            a("#contact_form")[0].reset())
+                    });
+                    d.preventDefault();
+                    return;
                 }
             });
     }),
