@@ -1454,6 +1454,11 @@ h3.comment-reply-title:after {
     overflow: hidden
 }
 
+.portfolio-item-img img {
+    min-height: 330px;
+    object-fit: cover;
+}
+
 .portfolio-grid figure .portfolio-item-img:after {
     content: '';
     position: absolute;
@@ -1541,9 +1546,30 @@ h3.comment-reply-title:after {
     transition: all .3s ease-in-out
 }
 
+.portfolio-grid figure .demo {
+    display: inline-block;
+    padding: 2px 7px;
+    background-color: #fff;
+    color: #222;
+    font-size: 11px;
+    line-height: 1.2em;
+    bottom: 15px;
+    right: 15px;
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    z-index: 10;
+    cursor: pointer;
+}
+
 .portfolio-grid figure:hover i,
 .portfolio-grid figure:hover .name,
-.portfolio-grid figure:hover .category {
+.portfolio-grid figure:hover .category,
+.portfolio-grid figure:hover .demo {
     opacity: 1
 }
 
@@ -1589,7 +1615,10 @@ h3.comment-reply-title:after {
     -moz-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out
+    transition: all .3s ease-in-out;
+    width: 100%;
+    max-height: 312px;
+    object-fit: cover;
 }
 
 .blog-card .media-block:hover img {
@@ -1628,6 +1657,7 @@ h3.comment-reply-title:after {
     color: #222;
     z-index: 3
 }
+
 
 .blog-card .post-date {
     display: inline-block;
@@ -2180,7 +2210,10 @@ h3.comment-reply-title:after {
 
 .post-thumbnail img {
     display: block;
-    margin: 0 auto
+    margin: 0 auto;
+    max-height: 700px;
+    object-fit: cover;
+    width: 100%;
 }
 
 .entry-header {
@@ -3469,6 +3502,7 @@ blockquote p {
 
 /*Cabins*/
 .cabin {
+    font-size: 12px;
     background-color: red;
     width: 20%;
     height: 20%;
@@ -3552,4 +3586,12 @@ blockquote p {
     100% {
         transform: rotate(-360deg);
     }
+}
+
+.content-underline::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px px;
+    background-color: #0099e5;
 }
