@@ -1722,7 +1722,6 @@ h3.comment-reply-title:after {
     line-height: 44px;
     font-size: 44px;
     text-align: center;
-    content: "e62e";
     color: #fff
 }
 
@@ -3594,4 +3593,50 @@ blockquote p {
     width: 100%;
     height: 2px px;
     background-color: #0099e5;
+}
+
+.media-block .effect-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+    transition: .5s;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.media-block:hover .effect-text {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.media-block .effect-text h2 {
+    height: 45px;
+    color: #ffffff;
+    font-size: 25px;
+    margin: 0;
+}
+
+.media-block .effect-text p {
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0 0 20px 0;
+}
+
+.media-block .effect-btn .btn {
+    display: inline-block;
+    height: 35px;
+    padding: 7px 15px;
+    color: #333333;
+    background: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
 }
